@@ -1,0 +1,39 @@
+# Privacy-sensitive
+Quotation_*.pdf
+*Signed*.pdf
+Part-1.docx
+Part-1_extracted/
+CLAUDE.md
+
+# QA / pentest artefacts (internal)
+qa.py
+qa_full.py
+perf.py
+pentest.py
+pentest_deep.py
+qa_report.json
+pentest_report.json
+pentest_deep_report.json
+qa_screenshots/
+
+# Server runtime / logs
+/tmp/gmc-server.log
+*.log
+*.pid
+
+# OS / editor / Python cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.orig
+__pycache__/
+*.pyc
+*.pyo
+
+# Local config
+.env
+.env.local
