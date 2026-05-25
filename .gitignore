@@ -2,8 +2,16 @@
 Quotation_*.pdf
 *Signed*.pdf
 Part-1.docx
+Part-2.docx
 Part-1_extracted/
+_incoming/
+ca.zip
 CLAUDE.md
+
+# Runtime data (never commit user submissions / uploaded CVs)
+uploads/
+submissions/
+venv/
 
 # QA / pentest artefacts (internal)
 qa.py
@@ -11,6 +19,8 @@ qa_full.py
 perf.py
 pentest.py
 pentest_deep.py
+test_backend.py
+test_e2e.py
 qa_report.json
 pentest_report.json
 pentest_deep_report.json
@@ -37,3 +47,6 @@ __pycache__/
 # Local config
 .env
 .env.local
+
+# Internal session artifact
+session.txt
