@@ -1,4 +1,4 @@
-/* G Mandowara & Co. — Front-end interactions
+/* G Mandowara & Co., Front-end interactions
    No external state, no inline event handlers, no eval. */
 (function () {
   'use strict';
@@ -73,7 +73,7 @@
       for (var n = 0; n < hidden.length; n++) hidden[n].classList.add('aos-animate');
     }, 2500);
   } else {
-    // AOS failed to load (CDN blocked) — make sure data-aos elements aren't invisible
+    // AOS failed to load (CDN blocked), make sure data-aos elements aren't invisible
     var stuck = document.querySelectorAll('[data-aos]');
     for (var m = 0; m < stuck.length; m++) stuck[m].style.opacity = '1';
   }

@@ -1,4 +1,4 @@
-/* G Mandowara & Co. — secure form handler (contact + career)
+/* G Mandowara & Co., secure form handler (contact + career)
    - Fetches a fresh CSRF + math-captcha token from /api/form-init
    - Honeypot + client-side validation before submit
    - Submits via fetch to /api/contact or /api/career
@@ -41,7 +41,7 @@
         if (captchaQ) captchaQ.textContent = d.captcha_question ? (d.captcha_question + ' =') : 'Captcha unavailable';
       })
       .catch(function () {
-        if (captchaQ) captchaQ.textContent = 'Captcha unavailable — try refresh';
+        if (captchaQ) captchaQ.textContent = 'Captcha unavailable, try refresh';
       });
   }
   initToken();
