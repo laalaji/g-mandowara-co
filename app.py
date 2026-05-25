@@ -176,9 +176,14 @@ def log_submission(kind, record):
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def try_email(subject, body):
+# Where each form's submissions are emailed (override via env if needed).
+CONTACT_EMAIL = os.environ.get("GMC_CONTACT_EMAIL", "info@ca-gmc.com")
+CAREER_EMAIL = os.environ.get("GMC_CAREER_EMAIL", "info@ca-gmc.com")
+
+
+def try_email(subject, body, to_addr=None):
     host = os.environ.get("SMTP_HOST")
-    to_addr = os.environ.get("GMC_NOTIFY_EMAIL")
+    to_addr = to_addr or os.environ.get("GMC_NOTIFY_EMAIL")
     if not host or not to_addr:
         return False
     try:
@@ -307,7 +312,8 @@ def contact():
               "subject": subject, "message": message}
     log_submission("contact", record)
     try_email(f"[Website] Contact: {subject}",
-              f"Name: {name}\nEmail: {email}\nPhone: {phone}\n\n{message}")
+              f"Name: {name}\nEmail: {email}\nPhone: {phone}\n\n{message}",
+              CONTACT_EMAIL)
 
     return jsonify({"ok": True, "message": "Thank you! Your message has been received. We'll be in touch shortly."})
 
@@ -360,7 +366,8 @@ def career():
               "cv_size": len(data)}
     log_submission("career", record)
     try_email(f"[Website] CV: {name}",
-              f"Name: {name}\nEmail: {email}\nPhone: {phone}\nRole: {role}\nFile: {stored} ({len(data)} bytes)")
+              f"Name: {name}\nEmail: {email}\nPhone: {phone}\nRole: {role}\nFile: {stored} ({len(data)} bytes)",
+              CAREER_EMAIL)
 
     return jsonify({"ok": True, "message": "Thank you! Your application and CV have been received."})
 
