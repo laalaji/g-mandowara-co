@@ -76,7 +76,9 @@ CSP = (
     "font-src 'self' https://fonts.gstatic.com; "
     "img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; "
     "script-src 'self' https://cdn.jsdelivr.net; "
-    "connect-src 'self'; object-src 'none'; base-uri 'self'; "
+    "connect-src 'self'; "
+    "frame-src https://www.google.com https://maps.google.com; "
+    "object-src 'none'; base-uri 'self'; "
     "form-action 'self'; frame-ancestors 'none'"
 )
 
