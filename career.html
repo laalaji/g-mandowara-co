@@ -21,6 +21,7 @@
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -69,23 +70,47 @@
 
     <section class="section">
       <div class="container">
-        <div class="career-grid">
+        <header class="head-center">
+          <p class="eyebrow" data-aos="fade-up">Why join us</p>
+          <h2 class="title-accent" data-aos="fade-up" data-aos-delay="80">Grow with a trusted name since 1973.</h2>
+          <p class="section-lead" data-aos="fade-up" data-aos-delay="160">Work alongside experienced Chartered Accountants on diverse engagements &mdash; and build a foundation that lasts a career.</p>
+        </header>
 
-          <div data-aos="fade-right">
-            <p class="eyebrow">Why join us</p>
-            <h2 class="title-accent">Grow with a trusted name since 1973.</h2>
-            <p>At G Mandowara &amp; Co., you&rsquo;ll work alongside experienced Chartered Accountants on diverse engagements across audit, taxation, advisory, and compliance &mdash; gaining exposure that shapes a strong professional foundation.</p>
-            <ul class="career-perks">
-              <li>Hands-on experience across multiple practice areas.</li>
-              <li>Mentorship from seasoned professionals and partners.</li>
-              <li>A culture built on ethics, learning, and responsibility.</li>
-              <li>Exposure to clients across diverse industries pan-India.</li>
-            </ul>
+        <div class="icon-cards cols-4">
+          <article class="icon-card" data-aos="fade-up">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h12M3 17h18" stroke-linecap="round"/></svg></div>
+            <h3>Diverse Exposure</h3>
+            <p>Hands-on experience across audit, taxation, advisory, and compliance practice areas.</p>
+          </article>
+          <article class="icon-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M5 21a7 7 0 0 1 14 0" stroke-linecap="round"/></svg></div>
+            <h3>Mentorship</h3>
+            <p>Guidance from seasoned professionals and partners who invest in your growth.</p>
+          </article>
+          <article class="icon-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg></div>
+            <h3>Ethics &amp; Culture</h3>
+            <p>A culture built on integrity, learning, and genuine responsibility.</p>
+          </article>
+          <article class="icon-card" data-aos="fade-up" data-aos-delay="240">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" stroke-linecap="round"/></svg></div>
+            <h3>Pan-India Clients</h3>
+            <p>Exposure to clients across diverse industries throughout the country.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <div class="career-grid">
+          <div class="media-frame with-accent" data-aos="fade-right" style="aspect-ratio:4/5; min-height:420px;">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Professionals collaborating in a modern office." loading="lazy" decoding="async">
           </div>
 
           <div data-aos="fade-left" data-aos-delay="120">
             <div class="form-card">
-              <h2 class="title-accent" style="font-size:1.5rem;">Drop your CV here</h2>
+              <h2 class="title-accent" style="font-size:1.6rem;">Drop your CV here</h2>
               <p style="color:var(--ink-500); margin-bottom:24px;">Share your details and resume &mdash; our team will reach out if there&rsquo;s a suitable opportunity.</p>
 
               <div class="form-message" id="formMsg" role="status" aria-live="polite"></div>
@@ -114,7 +139,7 @@
                 <div class="field">
                   <label for="cv-file">Resume / CV <span class="req">*</span></label>
                   <label class="dropzone" id="dropzone" for="cv-file">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round"/></svg>
+                    <span class="dz-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0 4 4m-4-4-4 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round"/></svg></span>
                     <p>Click to upload or drag &amp; drop</p>
                     <span class="dz-hint">PDF, DOC or DOCX &middot; max 5 MB</span>
                     <input type="file" id="cv-file" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
@@ -122,7 +147,6 @@
                   </label>
                 </div>
 
-                <!-- Honeypot -->
                 <div class="hp-field" aria-hidden="true">
                   <label for="cv-company">Company (leave blank)</label>
                   <input type="text" id="cv-company" name="company" tabindex="-1" autocomplete="off">
@@ -146,7 +170,6 @@
               </form>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -156,7 +179,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img class="brand-logo" src="assets/images/ca-logo.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+        <img class="brand-logo" src="assets/images/ca-logo.png" alt="" width="44" height="44" decoding="async">
         <div>
           <p class="footer-name">G Mandowara &amp; Co.</p>
           <p class="footer-tag">Chartered Accountants &middot; Since 1973</p>

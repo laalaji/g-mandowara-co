@@ -21,6 +21,7 @@
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -69,32 +70,68 @@
 
     <section class="section">
       <div class="container">
-        <div class="coming-soon" data-aos="fade-up">
-          <span class="coming-soon-badge">Coming Soon</span>
-          <h2 class="title-accent" style="text-align:center;">Our knowledge hub is on its way.</h2>
-          <p style="color:var(--ink-500);">We&rsquo;re preparing a collection of articles, regulatory updates, and practical guides to help businesses and individuals stay informed on evolving tax laws, compliance requirements, and financial best practices. Check back soon &mdash; or reach out to our team for guidance in the meantime.</p>
-          <div style="margin-top:8px;">
+        <article class="article-feature" data-aos="fade-up">
+          <div class="article-feature-media">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Financial charts and analysis on a desk." loading="lazy" decoding="async">
+          </div>
+          <div class="article-feature-body">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h2 class="title-accent">Our knowledge hub is on its way.</h2>
+            <p>We&rsquo;re preparing a collection of articles, regulatory updates, and practical guides to help businesses and individuals stay informed on evolving tax laws, compliance requirements, and financial best practices.</p>
+            <p>Until then, our team is always happy to answer your questions directly.</p>
             <a href="contact.html" class="btn btn-primary">Ask Our Team</a>
           </div>
-        </div>
+        </article>
 
-        <div class="articles-preview-grid" aria-hidden="true">
-          <article class="article-skeleton" data-aos="fade-up">
-            <span class="sk-tag">Taxation</span>
-            <h3>GST &amp; Income Tax Updates</h3>
-            <p>Timely briefs on changes to direct and indirect tax law and what they mean for you.</p>
+        <header class="head-center">
+          <p class="eyebrow" data-aos="fade-up">What to expect</p>
+          <h2 class="title-accent" data-aos="fade-up" data-aos-delay="80">Insights across our practice areas.</h2>
+        </header>
+
+        <div class="category-grid">
+          <article class="category-card" data-aos="fade-up">
+            <div class="category-media">
+              <span class="category-tag">Taxation</span>
+              <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=70" alt="Newspaper and financial reading." loading="lazy" decoding="async">
+            </div>
+            <div class="category-body">
+              <h3>GST &amp; Income Tax Updates</h3>
+              <p>Timely briefs on changes to direct and indirect tax law &mdash; and what they mean for you.</p>
+            </div>
           </article>
-          <article class="article-skeleton" data-aos="fade-up" data-aos-delay="100">
-            <span class="sk-tag">Compliance</span>
-            <h3>Regulatory &amp; ROC Guides</h3>
-            <p>Practical checklists for corporate compliance, filings, and statutory deadlines.</p>
+
+          <article class="category-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="category-media">
+              <span class="category-tag">Compliance</span>
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=70" alt="Analytics dashboard on a laptop." loading="lazy" decoding="async">
+            </div>
+            <div class="category-body">
+              <h3>Regulatory &amp; ROC Guides</h3>
+              <p>Practical checklists for corporate compliance, filings, and statutory deadlines.</p>
+            </div>
           </article>
-          <article class="article-skeleton" data-aos="fade-up" data-aos-delay="200">
-            <span class="sk-tag">Advisory</span>
-            <h3>Business &amp; Finance Insights</h3>
-            <p>Strategic perspectives on structuring, funding, and sustainable growth.</p>
+
+          <article class="category-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="category-media">
+              <span class="category-tag">Advisory</span>
+              <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=70" alt="Advisory discussion between professionals." loading="lazy" decoding="async">
+            </div>
+            <div class="category-body">
+              <h3>Business &amp; Finance Insights</h3>
+              <p>Strategic perspectives on structuring, funding, and sustainable growth.</p>
+            </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="container cta-inner" data-aos="fade-up">
+        <div>
+          <h2>Have a question in the meantime?</h2>
+          <p>Our team is ready to provide guidance on taxation, audit, compliance, and advisory matters.</p>
+        </div>
+        <a href="contact.html" class="btn btn-light">Contact Us</a>
       </div>
     </section>
 
@@ -103,7 +140,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img class="brand-logo" src="assets/images/ca-logo.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+        <img class="brand-logo" src="assets/images/ca-logo.png" alt="" width="44" height="44" decoding="async">
         <div>
           <p class="footer-name">G Mandowara &amp; Co.</p>
           <p class="footer-tag">Chartered Accountants &middot; Since 1973</p>

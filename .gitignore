@@ -50,3 +50,4 @@ __pycache__/
 
 # Internal session artifact
 session.txt
+final_qa.py
