@@ -1,11 +1,13 @@
 """Gunicorn config for G Mandowara & Co."""
+import os
 import gunicorn
 
 # Sanitise the Server banner (avoid leaking gunicorn version)
 gunicorn.SERVER_SOFTWARE = "GMC/1.0"
 gunicorn.SERVER = "GMC/1.0"
 
-bind = "0.0.0.0:8080"
+# Bind to the platform-provided port (Render/Heroku set $PORT); default 8080 locally.
+bind = "0.0.0.0:" + os.environ.get("PORT", os.environ.get("GMC_PORT", "8080"))
 workers = 1            # single worker keeps in-memory rate-limit / captcha state consistent
 threads = 4            # concurrency via threads
 worker_class = "gthread"

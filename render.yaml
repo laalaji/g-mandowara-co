@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: g-mandowara-co
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -c gunicorn.conf.py app:app
+    healthCheckPath: /index.html
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.11"
+      # HMAC key for CSRF + captcha signing (Render generates a strong value)
+      - key: GMC_SECRET
+        generateValue: true
+      # Where form submissions are emailed (set SMTP_* below to enable sending)
+      - key: GMC_CONTACT_EMAIL
+        value: info@ca-gmc.com
+      - key: GMC_CAREER_EMAIL
+        value: info@ca-gmc.com
+      # --- Email delivery (fill these in Render to turn on sending) ---
+      # - key: SMTP_HOST
+      #   sync: false
+      # - key: SMTP_PORT
+      #   value: "587"
+      # - key: SMTP_USER
+      #   sync: false
+      # - key: SMTP_PASS
+      #   sync: false
+      # - key: SMTP_FROM
+      #   value: info@ca-gmc.com
+      # - key: GMC_NOTIFY_EMAIL
+      #   value: info@ca-gmc.com
