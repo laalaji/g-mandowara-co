@@ -181,7 +181,13 @@ CONTACT_EMAIL = os.environ.get("GMC_CONTACT_EMAIL", "info@ca-gmc.com")
 CAREER_EMAIL = os.environ.get("GMC_CAREER_EMAIL", "info@ca-gmc.com")
 
 
-def try_email(subject, body, to_addr=None):
+def try_email(subject, body, to_addr=None, attachments=None):
+    """
+    Send an email via SMTP. Supports both STARTTLS (587/25) and direct SSL (465).
+    Set SMTP_SSL=1 to use SMTP_SSL on port 465 (required for GoDaddy Workspace Email).
+
+    attachments: optional list of dicts with keys: filename, mimetype, data (bytes)
+    """
     host = os.environ.get("SMTP_HOST")
     to_addr = to_addr or os.environ.get("GMC_NOTIFY_EMAIL")
     if not host or not to_addr:
@@ -192,14 +198,33 @@ def try_email(subject, body, to_addr=None):
         msg["From"] = os.environ.get("SMTP_FROM", "noreply@ca-gmc.com")
         msg["To"] = to_addr
         msg.set_content(body)
+
+        if attachments:
+            for att in attachments:
+                fname = att.get("filename") or "attachment.bin"
+                mtype = att.get("mimetype") or "application/octet-stream"
+                data = att.get("data") or b""
+                maintype, _, subtype = mtype.partition("/")
+                msg.add_attachment(data, maintype=maintype or "application",
+                                   subtype=subtype or "octet-stream",
+                                   filename=fname)
+
         port = int(os.environ.get("SMTP_PORT", "587"))
-        with smtplib.SMTP(host, port, timeout=10) as s:
-            s.starttls()
-            user = os.environ.get("SMTP_USER")
-            pwd = os.environ.get("SMTP_PASS")
-            if user and pwd:
-                s.login(user, pwd)
-            s.send_message(msg)
+        use_ssl = os.environ.get("SMTP_SSL", "").lower() in ("1", "true", "yes") or port == 465
+        user = os.environ.get("SMTP_USER")
+        pwd = os.environ.get("SMTP_PASS")
+
+        if use_ssl:
+            with smtplib.SMTP_SSL(host, port, timeout=15) as s:
+                if user and pwd:
+                    s.login(user, pwd)
+                s.send_message(msg)
+        else:
+            with smtplib.SMTP(host, port, timeout=15) as s:
+                s.starttls()
+                if user and pwd:
+                    s.login(user, pwd)
+                s.send_message(msg)
         return True
     except Exception:
         return False
@@ -365,9 +390,21 @@ def career():
               "role": role, "cv_stored": stored, "cv_original": clean(f.filename, 200),
               "cv_size": len(data)}
     log_submission("career", record)
+
+    cv_mime = {"pdf": "application/pdf",
+               "doc": "application/msword",
+               "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"}.get(ext, "application/octet-stream")
+    safe_orig_name = re.sub(r"[^A-Za-z0-9._-]", "_", (f.filename or "").rsplit("/", 1)[-1])[:80] or f"cv.{ext}"
     try_email(f"[Website] CV: {name}",
-              f"Name: {name}\nEmail: {email}\nPhone: {phone}\nRole: {role}\nFile: {stored} ({len(data)} bytes)",
-              CAREER_EMAIL)
+              f"A new CV was submitted via the Career form on ca-gmc.com.\n\n"
+              f"Name:  {name}\n"
+              f"Email: {email}\n"
+              f"Phone: {phone}\n"
+              f"Role:  {role}\n"
+              f"File:  {safe_orig_name} ({len(data)} bytes)\n"
+              f"Server copy: {stored}\n",
+              CAREER_EMAIL,
+              attachments=[{"filename": safe_orig_name, "mimetype": cv_mime, "data": data}])
 
     return jsonify({"ok": True, "message": "Thank you! Your application and CV have been received."})
 

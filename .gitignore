@@ -48,6 +48,15 @@ __pycache__/
 .env
 .env.local
 
+# SSH / cloud keys — NEVER commit these
+*.pem
+*.ppk
+*.key
+*.priv
+id_rsa*
+id_ed25519*
+gmc-ec2-key*
+
 # Internal session artifact
 session.txt
 final_qa.py
